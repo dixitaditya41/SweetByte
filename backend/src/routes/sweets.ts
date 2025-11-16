@@ -1,6 +1,6 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import { body, validationResult, query } from 'express-validator';
-import { authenticate, isAdmin } from '../middleware/auth';
+import { authenticate, isAdmin, AuthRequest } from '../middleware/auth';
 import {
   createSweet,
   getAllSweets,
@@ -20,7 +20,7 @@ const validateSweet = [
   body('quantity').isInt({ min: 0 }).withMessage('Quantity must be a non-negative integer')
 ];
 
-router.post('/', authenticate, isAdmin, validateSweet, (req, res) => {
+router.post('/', authenticate, isAdmin, validateSweet, (req: AuthRequest, res: Response) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -35,7 +35,7 @@ router.get('/search', authenticate, [
   query('category').optional().trim(),
   query('minPrice').optional().isFloat({ min: 0 }),
   query('maxPrice').optional().isFloat({ min: 0 })
-], (req, res) => {
+], (req: AuthRequest, res: Response) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -43,7 +43,7 @@ router.get('/search', authenticate, [
   searchSweets(req, res);
 });
 
-router.put('/:id', authenticate, isAdmin, validateSweet, (req, res) => {
+router.put('/:id', authenticate, isAdmin, validateSweet, (req: AuthRequest, res: Response) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -57,7 +57,7 @@ router.post('/:id/purchase', authenticate, purchaseSweet);
 
 router.post('/:id/restock', authenticate, isAdmin, [
   body('quantity').isInt({ min: 1 }).withMessage('Restock quantity must be at least 1')
-], (req, res) => {
+], (req: AuthRequest, res: Response) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });

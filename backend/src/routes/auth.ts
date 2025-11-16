@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
 import { register, login } from '../controllers/authController';
 
@@ -15,7 +15,7 @@ const validateLogin = [
   body('password').notEmpty().withMessage('Password is required')
 ];
 
-router.post('/register', validateRegister, (req, res) => {
+router.post('/register', validateRegister, (req: Request, res: Response) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -23,7 +23,7 @@ router.post('/register', validateRegister, (req, res) => {
   register(req, res);
 });
 
-router.post('/login', validateLogin, (req, res) => {
+router.post('/login', validateLogin, (req: Request, res: Response) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });

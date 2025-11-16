@@ -32,7 +32,7 @@ describe('Sweets API', () => {
       password: 'password123',
       role: 'admin'
     });
-    adminId = admin._id.toString();
+    adminId = (admin._id as mongoose.Types.ObjectId).toString();
 
     const user = await User.create({
       username: 'user',
@@ -40,7 +40,7 @@ describe('Sweets API', () => {
       password: 'password123',
       role: 'user'
     });
-    userId = user._id.toString();
+    userId = (user._id as mongoose.Types.ObjectId).toString();
 
     const jwtSecret = process.env.JWT_SECRET || 'test-secret';
     adminToken = jwt.sign({ id: adminId, role: 'admin' }, jwtSecret);
@@ -177,7 +177,7 @@ describe('Sweets API', () => {
         price: 2.99,
         quantity: 50
       });
-      sweetId = sweet._id.toString();
+      sweetId = (sweet._id as mongoose.Types.ObjectId).toString();
     });
 
     it('should update sweet as admin', async () => {
@@ -235,7 +235,7 @@ describe('Sweets API', () => {
         price: 2.99,
         quantity: 50
       });
-      sweetId = sweet._id.toString();
+      sweetId = (sweet._id as mongoose.Types.ObjectId).toString();
     });
 
     it('should delete sweet as admin', async () => {
@@ -268,7 +268,7 @@ describe('Sweets API', () => {
         price: 2.99,
         quantity: 10
       });
-      sweetId = sweet._id.toString();
+      sweetId = (sweet._id as mongoose.Types.ObjectId).toString();
     });
 
     it('should purchase sweet and decrease quantity', async () => {
@@ -311,7 +311,7 @@ describe('Sweets API', () => {
         price: 2.99,
         quantity: 10
       });
-      sweetId = sweet._id.toString();
+      sweetId = (sweet._id as mongoose.Types.ObjectId).toString();
     });
 
     it('should restock sweet as admin', async () => {
