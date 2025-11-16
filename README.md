@@ -113,13 +113,13 @@ http://localhost:3000
 ## 📸 Screenshots
 
 ### User Dashboard
-![user](./screenshots/user.jpeg)
+![user](./user.jpeg)
 
 ### Admin Dashboard
-![admin](./screenshots/admin.jpeg)
+![admin](./admin.jpeg)
 
 ### Test Coverage
-![coverage](./screenshots/test-coverage.jpeg)
+![coverage](./test-coverage.jpeg)
 
 ## 🧪 Testing
 
