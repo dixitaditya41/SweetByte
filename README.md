@@ -108,6 +108,14 @@ npm run dev
 ```
 
 The frontend will run on `http://localhost:3000`
+### User Dashboard
+![user](./user.jpeg)
+
+### Admin Dashboard
+![admin](./admin.jpeg)
+
+### Test Coverage
+![coverage](./test-coverage.jpeg)
 
 ## API Endpoints
 
@@ -140,6 +148,7 @@ Run tests with coverage:
 npm test -- --coverage
 ```
 
+
 ## Usage
 
 1. Start both backend and frontend servers
@@ -147,6 +156,7 @@ npm test -- --coverage
 3. Register a new account or login
 4. Browse sweets, search, and make purchases
 5. If you need admin access, you can manually update a user's role in the database to "admin"
+
 
 ## My AI Usage
 
@@ -189,4 +199,3 @@ However, I made sure to:
 - Follow TDD principles by writing tests first, then implementing features
 
 The AI acted as a powerful pair-programming partner, helping me build a complete, functional application while ensuring code quality and best practices.
-
