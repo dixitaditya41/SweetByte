@@ -160,12 +160,12 @@ npm test -- --coverage
 ## Deployment
 
 ### Frontend (Vercel)
-The frontend is deployed on Vercel at: https://sweet-byte.vercel.app/
+The frontend is deployed on Vercel at: https://sweet-byte.vercel.app
 
 ### Backend (Render)
 The backend is configured to deploy on Render using the `render.yaml` file.
 
-Your Render backend URL (e.g., `https://sweetbyte-4ior.onrender.com`)
+Your Render backend URL : https://sweetbyte-4ior.onrender.com
 
 ## My AI Usage
 
