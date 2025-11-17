@@ -322,7 +322,7 @@ const Dashboard = () => {
               <input
                 type="number"
                 step="0.01"
-                placeholder="Price ($)"
+                placeholder="Price (Rs/Kg)"
                 value={formData.price}
                 onChange={(e) => setFormData({ ...formData, price: e.target.value })}
                 className="w-full px-4 py-3 border-2 border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-pink-400 transition-all"
@@ -371,7 +371,7 @@ const Dashboard = () => {
             </div>
             <div className="text-center mb-4">
               <p className="text-3xl font-bold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent mb-2">
-                ${sweet.price.toFixed(2)}
+                  Rs {sweet.price.toFixed(2)}/Kg
               </p>
               <p className={`text-sm font-semibold ${sweet.quantity > 0 ? 'text-green-600' : 'text-red-600'}`}>
                 {sweet.quantity > 0 ? `📦 ${sweet.quantity} in stock` : '❌ Out of Stock'}
