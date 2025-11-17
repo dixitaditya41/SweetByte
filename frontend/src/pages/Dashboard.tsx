@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
+import apiClient from '../config/axios';
 
 interface Sweet {
   _id: string;
@@ -35,7 +35,7 @@ const Dashboard = () => {
   const fetchSweets = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('/api/sweets');
+      const response = await apiClient.get('/api/sweets');
       setSweets(response.data.sweets);
     } catch (err: any) {
       setError(err.response?.data?.message || 'Failed to fetch sweets');
@@ -53,7 +53,7 @@ const Dashboard = () => {
       if (minPrice) params.minPrice = minPrice;
       if (maxPrice) params.maxPrice = maxPrice;
 
-      const response = await axios.get('/api/sweets/search', { params });
+      const response = await apiClient.get('/api/sweets/search', { params });
       setSweets(response.data.sweets);
     } catch (err: any) {
       setError(err.response?.data?.message || 'Search failed');
@@ -64,7 +64,7 @@ const Dashboard = () => {
 
   const handlePurchase = async (id: string) => {
     try {
-      const response = await axios.post(`/api/sweets/${id}/purchase`);
+      const response = await apiClient.post(`/api/sweets/${id}/purchase`);
       setSweets(sweets.map(sweet =>
         sweet._id === id ? response.data.sweet : sweet
       ));
@@ -76,7 +76,7 @@ const Dashboard = () => {
   const handleAdd = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post('/api/sweets', {
+      await apiClient.post('/api/sweets', {
         name: formData.name,
         category: formData.category,
         price: parseFloat(formData.price),
@@ -94,7 +94,7 @@ const Dashboard = () => {
     e.preventDefault();
     if (!editingSweet) return;
     try {
-      await axios.put(`/api/sweets/${editingSweet._id}`, {
+      await apiClient.put(`/api/sweets/${editingSweet._id}`, {
         name: formData.name,
         category: formData.category,
         price: parseFloat(formData.price),
@@ -111,7 +111,7 @@ const Dashboard = () => {
   const handleDelete = async (id: string) => {
     if (!window.confirm('Are you sure you want to delete this sweet?')) return;
     try {
-      await axios.delete(`/api/sweets/${id}`);
+      await apiClient.delete(`/api/sweets/${id}`);
       fetchSweets();
     } catch (err: any) {
       alert(err.response?.data?.message || 'Failed to delete sweet');
@@ -122,7 +122,7 @@ const Dashboard = () => {
     const quantity = prompt('Enter quantity to add:');
     if (!quantity || isNaN(parseInt(quantity))) return;
     try {
-      const response = await axios.post(`/api/sweets/${id}/restock`, {
+      const response = await apiClient.post(`/api/sweets/${id}/restock`, {
         quantity: parseInt(quantity)
       });
       setSweets(sweets.map(sweet =>
