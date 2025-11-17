@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Get API base URL from environment variable, fallback to empty string for relative URLs
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
+const API_BASE_URL = 'https://sweetbyte-4ior.onrender.com';
 
 // Create axios instance with base URL
 const apiClient = axios.create({
