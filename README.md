@@ -160,50 +160,12 @@ npm test -- --coverage
 ## Deployment
 
 ### Frontend (Vercel)
-
-The frontend is deployed on Vercel at: https://sweet-byte.vercel.app/
-
-**Environment Variables Required:**
-- `VITE_API_BASE_URL`: Your Render backend URL (e.g., `https://your-app.onrender.com`)
-
-To set environment variables in Vercel:
-1. Go to your project settings in Vercel
-2. Navigate to "Environment Variables"
-3. Add `VITE_API_BASE_URL` with your Render backend URL
+The frontend is deployed on Vercel at: https://sweet-byte.vercel.app
 
 ### Backend (Render)
-
 The backend is configured to deploy on Render using the `render.yaml` file.
 
-**Steps to Deploy on Render:**
-
-1. **Push your code to GitHub** (if not already done)
-
-2. **Connect to Render:**
-   - Go to [Render Dashboard](https://dashboard.render.com/)
-   - Click "New +" → "Web Service"
-   - Connect your GitHub repository
-   - Render will automatically detect the `render.yaml` file
-
-3. **Set Environment Variables in Render:**
-   - `MONGODB_URI`: Your MongoDB connection string (e.g., `mongodb+srv://username:password@cluster.mongodb.net/dbname`)
-   - `JWT_SECRET`: A secure random string for JWT token signing (generate a strong secret)
-   - `PORT`: Will be automatically set by Render (default: 10000)
-   - `NODE_ENV`: Set to `production`
-
-4. **Deploy:**
-   - Render will automatically build and deploy your backend
-   - The build command: `cd backend && npm install && npm run build`
-   - The start command: `cd backend && npm start`
-
-5. **Get your Backend URL:**
-   - After deployment, Render will provide a URL like: `https://your-app.onrender.com`
-   - Update the `VITE_API_BASE_URL` in Vercel with this URL
-
-**Important Notes:**
-- The backend CORS is configured to allow requests from `https://sweet-byte.vercel.app`
-- Make sure your MongoDB database is accessible from Render's servers
-- The free tier on Render may spin down after inactivity, causing a cold start delay
+Your Render backend URL : https://sweetbyte-4ior.onrender.com
 
 ## My AI Usage
 
